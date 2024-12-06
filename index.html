@@ -30,6 +30,19 @@
             const myHeart = "You";
             const yourAnswer = prompt("Will you be mine forever? 💍 (yes/no)");
 
+            // Check if the user clicked "Cancel" or provided null input
+            if (yourAnswer === null) {
+                console.log("Waiting for the right answer...");
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Take your time!',
+                    text: 'Take your time to decide... I’ll be here. ❤️',
+                    confirmButtonText: 'Okay!'
+                });
+                return; // Exit the function early
+            }
+
+            // Process the input (convert to lowercase for consistency)
             if (yourAnswer.toLowerCase() === "yes") {
                 console.log("You complete me ❤️");
                 Swal.fire({
