@@ -37,7 +37,13 @@
                     icon: 'info',
                     title: 'Take your time!',
                     text: 'Take your time to decide... I’ll be here. ❤️',
-                    confirmButtonText: 'Okay!'
+                    confirmButtonText: 'Okay!',
+                    showClass: {
+                        popup: 'animate__animated animate__fadeIn'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOut'
+                    }
                 });
                 return; // Exit the function early
             }
@@ -49,7 +55,14 @@
                     icon: 'success',
                     title: 'Yay!',
                     text: 'You just made me the happiest person alive! 🎉❤️',
-                    confirmButtonText: 'Aww! ❤️'
+                    confirmButtonText: 'Aww! ❤️',
+                    background: '#f3f3f3',
+                    customClass: {
+                        confirmButton: 'btn btn-lg btn-success'
+                    },
+                    showClass: {
+                        popup: 'animate__animated animate__zoomIn'
+                    }
                 });
             } else if (yourAnswer.toLowerCase() === "no") {
                 console.log("Love not found 💔");
@@ -57,15 +70,29 @@
                     icon: 'error',
                     title: 'Oh no!',
                     text: 'My heart is shattered 💔, but I respect your decision.',
-                    confirmButtonText: 'It\'s okay 💔'
+                    confirmButtonText: 'It\'s okay 💔',
+                    background: '#f8d7da',
+                    customClass: {
+                        confirmButton: 'btn btn-lg btn-danger'
+                    },
+                    showClass: {
+                        popup: 'animate__animated animate__fadeIn'
+                    },
+                    timer: 5000
                 });
             } else {
                 console.log("Waiting for the right answer...");
                 Swal.fire({
-                    icon: 'info',
+                    icon: 'question',
                     title: 'Take your time!',
                     text: 'Take your time to decide... I’ll be here. ❤️',
-                    confirmButtonText: 'Okay!'
+                    confirmButtonText: 'Okay!',
+                    showClass: {
+                        popup: 'animate__animated animate__fadeIn'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOut'
+                    }
                 });
             }
         }
