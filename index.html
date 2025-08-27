@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muzammil & Afsha Wedding Card</title>
+    <title>Muzammil ❤️ Afsha Wedding Card</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Fonts -->
@@ -13,6 +13,8 @@
             background: linear-gradient(135deg, #ffe6f0 0%, #d9c2e6 100%);
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
+            position: relative;
+            margin: 0;
         }
         .wedding-card {
             background: url('https://images.unsplash.com/photo-1519741497674-4113f4c149b8') no-repeat center center;
@@ -24,6 +26,10 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            transition: transform 0.3s;
+        }
+        .wedding-card:hover, .wedding-card:active {
+            transform: scale(1.02);
         }
         .wedding-card::before {
             content: '';
@@ -95,9 +101,9 @@
             padding: 10px 30px;
             border: none;
             border-radius: 25px;
-            transition: transform 0.3s;
+            transition: transform 0.3s, background 0.3s;
         }
-        .btn-rsvp:hover {
+        .btn-rsvp:hover, .btn-rsvp:active {
             transform: scale(1.1);
             background: #e6c200;
         }
@@ -114,6 +120,60 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
         }
+        .rose-petal {
+            position: absolute;
+            font-size: 1.5rem;
+            color: #ff4040;
+            animation: fall linear infinite;
+            pointer-events: none;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0.5;
+            }
+        }
+        .modal-content {
+            background: rgba(255, 245, 247, 0.95);
+            border-radius: 15px;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .modal-header {
+            border-bottom: none;
+            justify-content: center;
+        }
+        .modal-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: #c71585;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        .modal-body {
+            font-size: 1.2rem;
+            color: #333;
+            line-height: 1.6;
+            text-align: center;
+        }
+        .modal-footer {
+            border-top: none;
+            justify-content: center;
+        }
+        .btn-yes {
+            background: #ffd700;
+            color: #c71585;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+        }
+        .btn-yes:hover, .btn-yes:active {
+            background: #e6c200;
+        }
         @media (max-width: 768px) {
             .title { font-size: 2.5rem; }
             .names { font-size: 1.8rem; }
@@ -121,6 +181,16 @@
             .timer span { font-size: 1.5rem; }
             .message { font-size: 1rem; }
             .details { font-size: 1rem; }
+            .rose-petal { font-size: 1rem; }
+            .wedding-card { padding: 20px; }
+            .modal-title { font-size: 2rem; }
+            .modal-body { font-size: 1rem; }
+        }
+        @media (max-width: 576px) {
+            .timer { gap: 10px; }
+            .timer div { min-width: 60px; padding: 10px; }
+            .timer span { font-size: 1.2rem; }
+            .timer label { font-size: 0.7rem; }
         }
     </style>
 </head>
@@ -133,7 +203,7 @@
                     <span class="heart">❤️</span>
                     <span class="heart">❤️</span>
                     <h1 class="title">Our Forever Begins!</h1>
-                    <h2 class="names">Muzammil & Afsha</h2>
+                    <h2 class="names">Muzammil & Afsha❤️</h2>
                     <p class="date">March 30, 2026</p>
                     <div class="timer">
                         <div>
@@ -154,7 +224,7 @@
                         </div>
                     </div>
                     <p class="message">
-                        My dearest Afsha,<br>
+                        My dearest Afsha❤️,<br>
                         From the moment we met, I knew you were my forever. Here's to counting down the days until we become one. I love you always.<br>
                         - Muzammil
                     </p>
@@ -163,7 +233,27 @@
                         Venue: Grand Palace, New Delhi<br>
                         Time: 6:00 PM Onwards
                     </p>
-                    <button class="btn btn-rsvp mt-3">RSVP Now</button>
+                    <button class="btn btn-rsvp mt-3" data-bs-toggle="modal" data-bs-target="#rsvpModal">RSVP Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RSVP Modal -->
+    <div class="modal fade" id="rsvpModal" tabindex="-1" aria-labelledby="rsvpModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="rsvpModalLabel">A Question for You, Afsha❤️</h5>
+                </div>
+                <div class="modal-body">
+                    Afsha❤️, my love, will you join me in our forever journey?<br>
+                    I can't wait to share every moment of March 30, 2026, with you at the Grand Palace, New Delhi. Be there to make our day even more special.<br>
+                    With all my heart, Muzammil
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-yes" onclick="alert('Yay, Afsha❤️! Your heart says yes, and mine is over the moon! 💖')">Yes, I'm In!</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -197,6 +287,30 @@
 
         const timerInterval = setInterval(updateTimer, 1000);
         updateTimer(); // Initial call
+
+        // Falling Rose Petals
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.classList.add('rose-petal');
+            petal.textContent = '🌹';
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.animationDuration = Math.random() * 3 + 5 + 's'; // 5-8s
+            petal.style.fontSize = Math.random() * 0.5 + (window.innerWidth <= 768 ? 0.8 : 1.2) + 'rem';
+            document.body.appendChild(petal);
+
+            // Remove petal after animation
+            setTimeout(() => {
+                petal.remove();
+            }, parseFloat(petal.style.animationDuration) * 1000);
+        }
+
+        // Create petals at intervals
+        setInterval(createPetal, 500);
+
+        // Initial batch of petals
+        for (let i = 0; i < 10; i++) {
+            setTimeout(createPetal, Math.random() * 1000);
+        }
     </script>
 </body>
 </html>
