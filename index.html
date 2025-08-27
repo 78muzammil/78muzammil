@@ -3,139 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proposal</title>
-    <!-- Bootstrap CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- SweetAlert2 CDN -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.6/dist/sweetalert2.min.css">
-    <!-- SweetAlert2 Animation Library -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet"/>
+    <title>Muzammil & Afsha Wedding Card</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* Custom body style for centering */
         body {
+            background: linear-gradient(135deg, #ffe6f0 0%, #d9c2e6 100%);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+        .wedding-card {
+            background: url('https://images.unsplash.com/photo-1519741497674-4113f4c149b8') no-repeat center center;
+            background-size: cover;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .wedding-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(199, 21, 133, 0.7);
+            z-index: 1;
+        }
+        .wedding-card > * {
+            position: relative;
+            z-index: 2;
+        }
+        .title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .names {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #fff;
+            margin: 20px 0;
+        }
+        .date {
+            font-size: 1.5rem;
+            color: #ffd700;
+        }
+        .timer {
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background: #f0f8ff;
+            gap: 20px;
+            margin: 30px 0;
         }
-
-        .centered-message {
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-            color: #333;
+        .timer div {
+            background: rgba(255, 255, 255, 0.9);
+            color: #c71585;
+            padding: 15px;
+            border-radius: 10px;
+            min-width: 80px;
         }
-
-        .final-message {
-            font-size: 32px;
+        .timer span {
+            display: block;
+            font-size: 2rem;
             font-weight: bold;
-            color: #FF5733; /* Custom Color */
+        }
+        .timer label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        .message {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #f5f5f5;
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+        .details {
+            font-size: 1.2rem;
             margin-top: 20px;
         }
-
-        .container {
-            text-align: center;
-            border-radius: 10px;
-            padding: 40px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            background-color: white;
+        .btn-rsvp {
+            background: #ffd700;
+            color: #c71585;
+            font-weight: bold;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 25px;
+            transition: transform 0.3s;
+        }
+        .btn-rsvp:hover {
+            transform: scale(1.1);
+            background: #e6c200;
+        }
+        .heart {
+            position: absolute;
+            color: #ff4d4d;
+            font-size: 2rem;
+            animation: float 3s infinite;
+        }
+        .heart:nth-child(1) { top: 10%; left: 10%; }
+        .heart:nth-child(2) { top: 20%; right: 15%; }
+        .heart:nth-child(3) { bottom: 15%; left: 20%; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        @media (max-width: 768px) {
+            .title { font-size: 2.5rem; }
+            .names { font-size: 1.8rem; }
+            .date { font-size: 1.2rem; }
+            .timer span { font-size: 1.5rem; }
+            .message { font-size: 1rem; }
+            .details { font-size: 1rem; }
         }
     </style>
 </head>
-<body class="bg-light">
+<body>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="wedding-card">
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
+                    <h1 class="title">Our Forever Begins!</h1>
+                    <h2 class="names">Muzammil & Afsha</h2>
+                    <p class="date">March 30, 2026</p>
+                    <div class="timer">
+                        <div>
+                            <span id="days">00</span>
+                            <label>Days</label>
+                        </div>
+                        <div>
+                            <span id="hours">00</span>
+                            <label>Hours</label>
+                        </div>
+                        <div>
+                            <span id="minutes">00</span>
+                            <label>Minutes</label>
+                        </div>
+                        <div>
+                            <span id="seconds">00</span>
+                            <label>Seconds</label>
+                        </div>
+                    </div>
+                    <p class="message">
+                        My dearest Afsha,<br>
+                        From the moment we met, I knew you were my forever. Here's to counting down the days until we become one. I love you always.<br>
+                        - Muzammil
+                    </p>
+                    <p class="details">
+                        Join us to celebrate our love<br>
+                        Venue: Grand Palace, New Delhi<br>
+                        Time: 6:00 PM Onwards
+                    </p>
+                    <button class="btn btn-rsvp mt-3">RSVP Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <!-- SweetAlert2 and Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.6/dist/sweetalert2.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Call propose function as soon as the page loads
-        window.onload = function() {
-            propose();
+        // Countdown Timer
+        const weddingDate = new Date('March 30, 2026 18:00:00').getTime();
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const timeLeft = weddingDate - now;
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+
+            if (timeLeft < 0) {
+                clearInterval(timerInterval);
+                document.querySelector('.timer').innerHTML = '<h3>Our Big Day Has Arrived!</h3>';
+            }
         }
 
-        function propose() {
-            // Using SweetAlert2 to ask the proposal question
-            Swal.fire({
-                title: 'Will you be mine forever? 💍',
-                text: 'Please select your answer below:',
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonText: 'Yes, I will ❤️',
-                cancelButtonText: 'No, I can\'t 💔',
-                customClass: {
-                    confirmButton: 'btn btn-lg btn-success',
-                    cancelButton: 'btn btn-lg btn-danger'
-                },
-                showClass: {
-                    popup: 'animate__animated animate__zoomIn'
-                },
-                hideClass: {
-                    popup: 'animate__animated animate__fadeOut'
-                }
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Handle "Yes" response
-                    console.log("You complete me ❤️");
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Yay!',
-                        text: 'You just made me the happiest person alive! 🎉❤️',
-                        confirmButtonText: 'Aww! ❤️',
-                        background: '#f3f3f3',
-                        customClass: {
-                            confirmButton: 'btn btn-lg btn-success'
-                        },
-                        showClass: {
-                            popup: 'animate__animated animate__zoomIn'
-                        }
-                    }).then(() => {
-                        displayFinalMessage('Yes, I will ❤️');
-                    });
-                } else if (result.dismiss === Swal.DismissReason.cancel) {
-                    // Handle "No" response
-                    console.log("Love not found 💔");
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oh no!',
-                        text: 'My heart is shattered 💔, but I respect your decision.',
-                        confirmButtonText: 'It\'s okay 💔',
-                        background: '#f8d7da',
-                        customClass: {
-                            confirmButton: 'btn btn-lg btn-danger'
-                        },
-                        showClass: {
-                            popup: 'animate__animated animate__fadeIn'
-                        },
-                        timer: 5000
-                    }).then(() => {
-                        displayFinalMessage('No, I can\'t 💔');
-                    });
-                }
-            });
-        }
-
-        // Function to display the final message on the page
-        function displayFinalMessage(message) {
-            const container = document.createElement('div');
-            container.classList.add('container');
-
-            const centeredMessage = document.createElement('div');
-            centeredMessage.classList.add('centered-message');
-            centeredMessage.innerHTML = 'Your answer is:';
-
-            const finalMessage = document.createElement('div');
-            finalMessage.classList.add('final-message');
-            finalMessage.innerHTML = message;
-
-            container.appendChild(centeredMessage);
-            container.appendChild(finalMessage);
-
-            document.body.appendChild(container);
-        }
+        const timerInterval = setInterval(updateTimer, 1000);
+        updateTimer(); // Initial call
     </script>
-
 </body>
 </html>
