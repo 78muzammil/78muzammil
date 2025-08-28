@@ -10,30 +10,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         html, body {
-            height: 100%;
             margin: 0;
             padding: 0;
             overflow: hidden;
             background: linear-gradient(135deg, #ffe6f0 0%, #d9c2e6 100%);
             font-family: 'Poppins', sans-serif;
+            height: 100%;
         }
         .container {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
-            flex-direction: column;
+            align-items: center;
             justify-content: center;
+            padding: 10px;
+            box-sizing: border-box;
         }
         .wedding-card {
             background: url('https://images.unsplash.com/photo-1519741497674-4113f4c149b8') no-repeat center center;
             background-size: cover;
             border-radius: 15px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            padding: 20px;
+            padding: 15px;
             color: #fff;
             text-align: center;
             position: relative;
             overflow: hidden;
             transition: transform 0.3s;
+            max-height: 95vh;
+            overflow-y: auto;
         }
         .wedding-card:hover, .wedding-card:active {
             transform: scale(1.02);
@@ -54,35 +58,36 @@
         }
         .title {
             font-family: 'Great Vibes', cursive;
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: #ffd700;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin: 10px 0;
         }
         .names {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 600;
             color: #fff;
-            margin: 15px 0;
+            margin: 10px 0;
         }
         .date {
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: #ffd700;
+            margin: 10px 0;
         }
         .timer, .relationship-timer, .ramadan-timer {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin: 20px 0;
+            gap: 10px;
+            margin: 10px 0;
         }
         .timer div, .relationship-timer div, .ramadan-timer div {
             background: rgba(255, 255, 255, 0.9);
             color: #c71585;
-            padding: 10px;
+            padding: 8px;
             border-radius: 8px;
-            min-width: 60px;
+            min-width: 50px;
         }
         .ramadan-timer div {
-            background: rgba(255, 255, 255, 0.9);
             color: #2c3e50;
             border: 2px solid #ffd700;
             position: relative;
@@ -90,45 +95,59 @@
         .ramadan-timer div::before {
             content: '🌙';
             position: absolute;
-            top: -10px;
-            left: -10px;
-            font-size: 1rem;
+            top: -8px;
+            left: -8px;
+            font-size: 0.8rem;
         }
         .ramadan-timer div::after {
             content: '⭐';
             position: absolute;
-            bottom: -10px;
-            right: -10px;
-            font-size: 1rem;
+            bottom: -8px;
+            right: -8px;
+            font-size: 0.8rem;
+        }
+        .relationship-timer div {
+            position: relative;
+        }
+        .relationship-timer div::before {
+            content: '❤️';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            font-size: 0.8rem;
+        }
+        .relationship-timer div::after {
+            content: '❤️';
+            position: absolute;
+            bottom: -8px;
+            right: -8px;
+            font-size: 0.8rem;
         }
         .timer span, .relationship-timer span, .ramadan-timer span {
             display: block;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: bold;
         }
         .timer label, .relationship-timer label, .ramadan-timer label {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
         }
         .message {
-            font-size: 1.1rem;
+            font-size: 0.9rem;
             font-style: italic;
             color: #f5f5f5;
-            margin: 15px 0;
-            line-height: 1.5;
-        }
-        .details {
-            font-size: 1rem;
-            margin-top: 15px;
+            margin: 10px 0;
+            line-height: 1.4;
         }
         .btn-rsvp {
             background: #ffd700;
             color: #c71585;
             font-weight: bold;
-            padding: 8px 25px;
+            padding: 8px 20px;
             border: none;
             border-radius: 20px;
             transition: transform 0.3s, background 0.3s;
+            margin: 10px 0;
         }
         .btn-rsvp:hover, .btn-rsvp:active {
             transform: scale(1.1);
@@ -137,19 +156,19 @@
         .heart {
             position: absolute;
             color: #ff4d4d;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             animation: float 3s infinite;
         }
-        .heart:nth-child(1) { top: 10%; left: 10%; }
-        .heart:nth-child(2) { top: 20%; right: 15%; }
-        .heart:nth-child(3) { bottom: 15%; left: 20%; }
+        .heart:nth-child(1) { top: 5%; left: 5%; }
+        .heart:nth-child(2) { top: 15%; right: 10%; }
+        .heart:nth-child(3) { bottom: 10%; left: 15%; }
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-10px); }
         }
         .rose-petal {
             position: absolute;
-            font-size: 1rem;
+            font-size: 0.8rem;
             color: #ff4040;
             animation: fall linear infinite;
             pointer-events: none;
@@ -176,14 +195,14 @@
         }
         .modal-title {
             font-family: 'Great Vibes', cursive;
-            font-size: 2rem;
+            font-size: 1.5rem;
             color: #c71585;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
         }
         .modal-body {
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: #333;
-            line-height: 1.5;
+            line-height: 1.4;
             text-align: center;
         }
         .modal-footer {
@@ -202,22 +221,23 @@
             background: #e6c200;
         }
         @media (max-width: 768px) {
-            .title { font-size: 2rem; }
-            .names { font-size: 1.5rem; }
-            .date { font-size: 1rem; }
-            .timer span, .relationship-timer span, .ramadan-timer span { font-size: 1.2rem; }
-            .message { font-size: 0.9rem; }
-            .details { font-size: 0.9rem; }
-            .rose-petal { font-size: 0.8rem; }
-            .wedding-card { padding: 15px; }
-            .modal-title { font-size: 1.5rem; }
-            .modal-body { font-size: 0.9rem; }
+            .title { font-size: 1.8rem; }
+            .names { font-size: 1.3rem; }
+            .date { font-size: 0.9rem; }
+            .timer span, .relationship-timer span, .ramadan-timer span { font-size: 1rem; }
+            .message { font-size: 0.8rem; }
+            .btn-rsvp { padding: 6px 15px; }
+            .rose-petal { font-size: 0.6rem; }
+            .wedding-card { padding: 10px; }
+            .modal-title { font-size: 1.2rem; }
+            .modal-body { font-size: 0.8rem; }
         }
         @media (max-width: 576px) {
-            .timer, .relationship-timer, .ramadan-timer { gap: 8px; }
-            .timer div, .relationship-timer div, .ramadan-timer div { min-width: 50px; padding: 8px; }
-            .timer span, .relationship-timer span, .ramadan-timer span { font-size: 1rem; }
-            .timer label, .relationship-timer label, .ramadan-timer label { font-size: 0.6rem; }
+            .timer, .relationship-timer, .ramadan-timer { gap: 6px; }
+            .timer div, .relationship-timer div, .ramadan-timer div { min-width: 40px; padding: 6px; }
+            .timer span, .relationship-timer span, .ramadan-timer span { font-size: 0.8rem; }
+            .timer label, .relationship-timer label, .ramadan-timer label { font-size: 0.5rem; }
+            .heart { font-size: 1rem; }
         }
     </style>
 </head>
@@ -256,11 +276,7 @@
                         - Muzammil
                     </p>
                     <div class="relationship-timer">
-                        <h3 style="font-size: 1.2rem; color: #ffd700;">Our Journey Since June 18, 2021</h3>
-                        <div>
-                            <span id="relDays">00</span>
-                            <label>Days</label>
-                        </div>
+                        <h3 style="font-size: 1rem; color: #ffd700;">Our Journey Since June 18, 2021</h3>
                         <div>
                             <span id="relYears">00</span>
                             <label>Years</label>
@@ -269,9 +285,13 @@
                             <span id="relMonths">00</span>
                             <label>Months</label>
                         </div>
+                        <div>
+                            <span id="relDays">00</span>
+                            <label>Days</label>
+                        </div>
                     </div>
                     <div class="ramadan-timer">
-                        <h3 style="font-size: 1.2rem; color: #ffd700;">Ramadan 2026 Countdown</h3>
+                        <h3 style="font-size: 1rem; color: #ffd700;">Ramadan 2026 Countdown</h3>
                         <div>
                             <span id="ramadanDays">00</span>
                             <label>Days</label>
@@ -285,7 +305,7 @@
                             <label>Minutes</label>
                         </div>
                     </div>
-                    <button class="btn btn-rsvp mt-3" data-bs-toggle="modal" data-bs-target="#rsvpModal">RSVP Now</button>
+                    <button class="btn btn-rsvp" data-bs-toggle="modal" data-bs-target="#rsvpModal">RSVP Now</button>
                 </div>
             </div>
         </div>
@@ -335,27 +355,21 @@
             }
         }
 
-        // Relationship Duration Timer
+        // Relationship Duration Timer (Counting Up)
         const relationshipStart = new Date('June 18, 2021 00:00:00').getTime();
-        const relationshipEnd = new Date('March 30, 2026 18:00:00').getTime();
 
         function updateRelationshipTimer() {
             const now = new Date().getTime();
             const timePassed = now - relationshipStart;
-            const totalDuration = relationshipEnd - relationshipStart;
 
             const days = Math.floor(timePassed / (1000 * 60 * 60 * 24));
             const years = Math.floor(days / 365);
             const months = Math.floor((days % 365) / 30);
+            const remainingDays = days % 30;
 
-            document.getElementById('relDays').textContent = days.toString().padStart(2, '0');
             document.getElementById('relYears').textContent = years.toString().padStart(2, '0');
             document.getElementById('relMonths').textContent = months.toString().padStart(2, '0');
-
-            if (now >= relationshipEnd) {
-                clearInterval(relationshipTimerInterval);
-                document.querySelector('.relationship-timer').innerHTML = '<h3>Our Journey Continues Forever!</h3>';
-            }
+            document.getElementById('relDays').textContent = remainingDays.toString().padStart(2, '0');
         }
 
         // Ramadan Countdown Timer
@@ -393,7 +407,7 @@
             petal.textContent = '🌹';
             petal.style.left = Math.random() * 100 + 'vw';
             petal.style.animationDuration = Math.random() * 3 + 5 + 's';
-            petal.style.fontSize = Math.random() * 0.5 + (window.innerWidth <= 768 ? 0.6 : 1) + 'rem';
+            petal.style.fontSize = Math.random() * 0.4 + (window.innerWidth <= 768 ? 0.5 : 0.8) + 'rem';
             document.body.appendChild(petal);
 
             setTimeout(() => {
@@ -402,7 +416,7 @@
         }
 
         setInterval(createPetal, 500);
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 8; i++) {
             setTimeout(createPetal, Math.random() * 1000);
         }
     </script>
