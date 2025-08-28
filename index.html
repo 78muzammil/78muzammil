@@ -13,7 +13,7 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
-            background: linear-gradient(135deg, #ffe6f0 0%, #d9c2e6 100%);
+            background: linear-gradient(135deg, #ffccd5 0%, #d4a5ff 100%);
             font-family: 'Poppins', sans-serif;
             height: 100%;
         }
@@ -28,19 +28,20 @@
         .wedding-card {
             background: url('https://images.unsplash.com/photo-1519741497674-4113f4c149b8') no-repeat center center;
             background-size: cover;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
             padding: 15px;
             color: #fff;
             text-align: center;
             position: relative;
             overflow: hidden;
-            transition: transform 0.3s;
-            max-height: 95vh;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            max-height: 90vh;
             overflow-y: auto;
         }
         .wedding-card:hover, .wedding-card:active {
-            transform: scale(1.02);
+            transform: scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
         .wedding-card::before {
             content: '';
@@ -49,7 +50,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(199, 21, 133, 0.7);
+            background: rgba(199, 21, 133, 0.75);
             z-index: 1;
         }
         .wedding-card > * {
@@ -58,10 +59,15 @@
         }
         .title {
             font-family: 'Great Vibes', cursive;
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             color: #ffd700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
             margin: 10px 0;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); }
+            to { text-shadow: 2px 2px 10px rgba(255, 215, 0, 0.8); }
         }
         .names {
             font-size: 1.8rem;
@@ -81,16 +87,20 @@
             margin: 10px 0;
         }
         .timer div, .relationship-timer div, .ramadan-timer div {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             color: #c71585;
             padding: 8px;
-            border-radius: 8px;
+            border-radius: 10px;
             min-width: 50px;
+            position: relative;
+            transition: transform 0.2s ease;
+        }
+        .timer div:hover, .relationship-timer div:hover, .ramadan-timer div:hover {
+            transform: scale(1.1);
         }
         .ramadan-timer div {
             color: #2c3e50;
             border: 2px solid #ffd700;
-            position: relative;
         }
         .ramadan-timer div::before {
             content: '🌙';
@@ -107,21 +117,20 @@
             font-size: 0.8rem;
         }
         .relationship-timer div {
-            position: relative;
+            color: #c71585;
+        }
+        .relationship-timer div::before, .relationship-timer div::after {
+            content: '❤️';
+            position: absolute;
+            font-size: 0.8rem;
         }
         .relationship-timer div::before {
-            content: '❤️';
-            position: absolute;
             top: -8px;
             left: -8px;
-            font-size: 0.8rem;
         }
         .relationship-timer div::after {
-            content: '❤️';
-            position: absolute;
             bottom: -8px;
             right: -8px;
-            font-size: 0.8rem;
         }
         .timer span, .relationship-timer span, .ramadan-timer span {
             display: block;
@@ -138,33 +147,34 @@
             color: #f5f5f5;
             margin: 10px 0;
             line-height: 1.4;
+            padding: 0 10px;
         }
         .btn-rsvp {
-            background: #ffd700;
+            background: linear-gradient(45deg, #ffd700, #ffec80);
             color: #c71585;
             font-weight: bold;
             padding: 8px 20px;
             border: none;
             border-radius: 20px;
-            transition: transform 0.3s, background 0.3s;
+            transition: transform 0.3s ease, background 0.3s ease;
             margin: 10px 0;
         }
         .btn-rsvp:hover, .btn-rsvp:active {
             transform: scale(1.1);
-            background: #e6c200;
+            background: linear-gradient(45deg, #e6c200, #ffd700);
         }
         .heart {
             position: absolute;
             color: #ff4d4d;
             font-size: 1.2rem;
-            animation: float 3s infinite;
+            animation: float 3s ease-in-out infinite;
         }
-        .heart:nth-child(1) { top: 5%; left: 5%; }
-        .heart:nth-child(2) { top: 15%; right: 10%; }
-        .heart:nth-child(3) { bottom: 10%; left: 15%; }
+        .heart:nth-child(1) { top: 5%; left: 5%; animation-delay: 0s; }
+        .heart:nth-child(2) { top: 15%; right: 10%; animation-delay: 1s; }
+        .heart:nth-child(3) { bottom: 10%; left: 15%; animation-delay: 2s; }
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-10px) scale(1.2); }
         }
         .rose-petal {
             position: absolute;
@@ -172,15 +182,19 @@
             color: #ff4040;
             animation: fall linear infinite;
             pointer-events: none;
+            opacity: 0.8;
         }
         @keyframes fall {
             0% {
-                transform: translateY(-100vh) rotate(0deg);
-                opacity: 1;
+                transform: translateY(-100vh) rotate(0deg) scale(1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(0) rotate(180deg) scale(1.2);
             }
             100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0.5;
+                transform: translateY(100vh) rotate(360deg) scale(1);
+                opacity: 0.3;
             }
         }
         .modal-content {
@@ -210,7 +224,7 @@
             justify-content: center;
         }
         .btn-yes {
-            background: #ffd700;
+            background: linear-gradient(45deg, #ffd700, #ffec80);
             color: #c71585;
             font-weight: bold;
             border: none;
@@ -218,7 +232,7 @@
             padding: 8px 15px;
         }
         .btn-yes:hover, .btn-yes:active {
-            background: #e6c200;
+            background: linear-gradient(45deg, #e6c200, #ffd700);
         }
         @media (max-width: 768px) {
             .title { font-size: 1.8rem; }
@@ -238,6 +252,7 @@
             .timer span, .relationship-timer span, .ramadan-timer span { font-size: 0.8rem; }
             .timer label, .relationship-timer label, .ramadan-timer label { font-size: 0.5rem; }
             .heart { font-size: 1rem; }
+            .wedding-card { max-height: 85vh; }
         }
     </style>
 </head>
@@ -253,6 +268,7 @@
                     <h2 class="names">Muzammil & Afsha ❤️</h2>
                     <p class="date">March 30, 2026</p>
                     <div class="timer">
+                        <h3 style="font-size: 1rem; color: #ffd700;">Wedding Countdown</h3>
                         <div>
                             <span id="days">00</span>
                             <label>Days</label>
@@ -289,6 +305,18 @@
                             <span id="relDays">00</span>
                             <label>Days</label>
                         </div>
+                        <div>
+                            <span id="relHours">00</span>
+                            <label>Hours</label>
+                        </div>
+                        <div>
+                            <span id="relMinutes">00</span>
+                            <label>Minutes</label>
+                        </div>
+                        <div>
+                            <span id="relSeconds">00</span>
+                            <label>Seconds</label>
+                        </div>
                     </div>
                     <div class="ramadan-timer">
                         <h3 style="font-size: 1rem; color: #ffd700;">Ramadan 2026 Countdown</h3>
@@ -304,8 +332,12 @@
                             <span id="ramadanMinutes">00</span>
                             <label>Minutes</label>
                         </div>
+                        <div>
+                            <span id="ramadanSeconds">00</span>
+                            <label>Seconds</label>
+                        </div>
                     </div>
-                    <button class="btn btn-rsvp" data-bs-toggle="modal" data-bs-target="#rsvpModal">RSVP Now</button>
+<!--                     <button class="btn btn-rsvp" data-bs-toggle="modal" data-bs-target="#rsvpModal">RSVP Now</button> -->
                 </div>
             </div>
         </div>
@@ -366,10 +398,16 @@
             const years = Math.floor(days / 365);
             const months = Math.floor((days % 365) / 30);
             const remainingDays = days % 30;
+            const hours = Math.floor((timePassed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timePassed % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timePassed % (1000 * 60)) / 1000);
 
             document.getElementById('relYears').textContent = years.toString().padStart(2, '0');
             document.getElementById('relMonths').textContent = months.toString().padStart(2, '0');
             document.getElementById('relDays').textContent = remainingDays.toString().padStart(2, '0');
+            document.getElementById('relHours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('relMinutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('relSeconds').textContent = seconds.toString().padStart(2, '0');
         }
 
         // Ramadan Countdown Timer
@@ -382,10 +420,12 @@
             const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
             const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
             document.getElementById('ramadanDays').textContent = days.toString().padStart(2, '0');
             document.getElementById('ramadanHours').textContent = hours.toString().padStart(2, '0');
             document.getElementById('ramadanMinutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('ramadanSeconds').textContent = seconds.toString().padStart(2, '0');
 
             if (timeLeft < 0) {
                 clearInterval(ramadanTimerInterval);
@@ -406,7 +446,7 @@
             petal.classList.add('rose-petal');
             petal.textContent = '🌹';
             petal.style.left = Math.random() * 100 + 'vw';
-            petal.style.animationDuration = Math.random() * 3 + 5 + 's';
+            petal.style.animationDuration = Math.random() * 3 + 4 + 's';
             petal.style.fontSize = Math.random() * 0.4 + (window.innerWidth <= 768 ? 0.5 : 0.8) + 'rem';
             document.body.appendChild(petal);
 
@@ -415,8 +455,8 @@
             }, parseFloat(petal.style.animationDuration) * 1000);
         }
 
-        setInterval(createPetal, 500);
-        for (let i = 0; i < 8; i++) {
+        setInterval(createPetal, 400);
+        for (let i = 0; i < 10; i++) {
             setTimeout(createPetal, Math.random() * 1000);
         }
     </script>
